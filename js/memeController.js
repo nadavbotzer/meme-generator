@@ -6,21 +6,28 @@ let gCtx
 function onInit() {
     gCanvas = document.querySelector('canvas')
     gCtx = gCanvas.getContext('2d')
+    renderMeme()
 }
 
-function renderMeme(meme) {
+function renderMeme() {
+    const meme = getMeme()
     let path = `/imgs/${meme.selectedImgId}.jpg`
-    renderImage(path)
-    renderText('hi')
+    const lines = meme.lines
 
+    renderImage(path, () => {
+        lines.forEach(line => {
+            renderText(line.txt)
+        })
+    })
 }
 
-function renderImage(imageSrc) {
+function renderImage(imageSrc, callback) {
     const img = new Image()
     img.src = imageSrc
-
     img.onload = () => {
+        gCanvas.height = (img.naturalHeight / img.naturalWidth) * gCanvas.width
         gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
+        callback()
     }
 }
 
@@ -34,4 +41,9 @@ function renderText(text) {
     const textY = 50
     gCtx.fillText(text, textX, textY)
     gCtx.strokeText(text, textX, textY)
+}
+
+function onSetLineTxt(txt) {
+    setLineTxt(txt)
+    renderMeme()
 }

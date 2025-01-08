@@ -11,3 +11,12 @@ var gMeme = {
         }
     ]
 }
+
+
+function getMeme() {
+    return gMeme
+}
+
+function setLineTxt(txt) {
+    gMeme.lines[0].txt = txt
+}

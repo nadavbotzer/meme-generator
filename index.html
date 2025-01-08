@@ -14,6 +14,9 @@
             <h1>Meme Generator</h1>
         </header>
         <main>
+            <section class="options">
+                <input type="text" placeholder="Text" oninput="onSetLineTxt(value)">
+            </section>
             <section class="meme-container">
                 <div class="canvas-container">
                     <canvas>
@@ -25,6 +28,7 @@
     </div>
     <script src="js/service/memeService.js"></script>
     <script src="js/memeController.js"></script>
+    <script src="js/galleryController.js"></script>
 </body>
 
 </html>
