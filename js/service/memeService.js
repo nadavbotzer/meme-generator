@@ -41,7 +41,7 @@ function addLine() {
         id: ++gMeme.linesCounter,
         txt: 'Edit your text',
         size: 20,
-        color: 'red'
+        color: '#ffffff'
     }
     gMeme.lines.push(line)
     gMeme.selectedLineIdx = gMeme.linesCounter - 1

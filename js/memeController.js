@@ -20,6 +20,7 @@ function renderMeme() {
             renderText(txt, size, color, id)
         })
     })
+
 }
 
 function renderImage(imageSrc, callback) {
@@ -54,6 +55,16 @@ function renderText(text, size, color, id) {
 
     gCtx.fillText(text, textX, textY)
     gCtx.strokeText(text, textX, textY)
+    const meme = getMeme()
+    if (meme.selectedLineIdx + 1 === id) {
+        let textSizes = gCtx.measureText(text)
+        drawRect(
+            textX - textSizes.actualBoundingBoxLeft - 5,
+            textY - textSizes.actualBoundingBoxAscent - 5,
+            textSizes.width + 10,
+            textSizes.actualBoundingBoxAscent + textSizes.actualBoundingBoxDescent + 10
+        )
+    }
 }
 
 function onSetLineTxt(txt) {
@@ -83,6 +94,15 @@ function onAddLine() {
 }
 
 function onSwitchLine() {
+    const meme = getMeme()
     setCurrLineIdx()
     renderMeme()
+    console.log(meme)
+    document.querySelector('.text').value = meme.lines[gMeme.selectedLineIdx].txt
+    document.querySelector('.color').value = meme.lines[gMeme.selectedLineIdx].color
+}
+
+function drawRect(x, y, width, height) {
+    gCtx.strokeStyle = 'black'
+    gCtx.strokeRect(x, y, width, height)
 }

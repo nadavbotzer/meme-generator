@@ -21,9 +21,9 @@
         </header>
         <main>
             <section class="options">
-                <input type="text" placeholder="Text" oninput="onSetLineTxt(value)">
+                <input class="text" type="text" placeholder="Text" oninput="onSetLineTxt(value)">
                 <a class="btn" href="#" onclick="onDownloadCanvas(this)">Download</a>
-                <input class="color" type="color" id="color" onchange="onSetColor(value)">
+                <input class="color" type="color" id="color" value="#ffffff" onchange="onSetColor(value)">
                 <button onclick="onChangeSize(-2)">-</button>
                 <button onclick="onChangeSize(2)">+</button>
                 <button onclick="onAddLine()">Add Text</button>
