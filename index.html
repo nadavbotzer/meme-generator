@@ -21,13 +21,20 @@
         </header>
         <main>
             <section class="options">
-                <input class="text" type="text" placeholder="Text" oninput="onSetLineTxt(value)">
-                <a class="btn" href="#" onclick="onDownloadCanvas(this)">Download</a>
-                <input class="color" type="color" id="color" value="#ffffff" onchange="onSetColor(value)">
-                <button onclick="onChangeSize(-2)">-</button>
-                <button onclick="onChangeSize(2)">+</button>
-                <button onclick="onAddLine()">Add Text</button>
-                <button onclick="onSwitchLine()">Switch lines</button>
+                <input class="text" type="text" placeholder="Edit your text" oninput="onSetLineTxt(value)">
+                <div class="options-group">
+                    <input class="color" type="color" id="color" value="#ffffff" onchange="onSetColor(value)">
+                    <button class="btn" onclick="onChangeSize(-2)">-</button>
+                    <button class="btn" onclick="onChangeSize(2)">+</button>
+                </div>
+                <div class="options-group justify-end">
+                    <button class="btn" onclick="onAddLine()">Add Text</button>
+                    <button class="btn" onclick="onSwitchLine()">Switch lines</button>
+                </div>
+                <div class="options-group justify-center">
+                    <a class="btn" href="#" onclick="onDownloadCanvas(this)">Download</a>
+                    <a class="btn" href="#" onclick="onDownloadCanvas(this)">Share</a>
+                </div>
             </section>
             <section class="meme-container">
                 <div class="canvas-container">

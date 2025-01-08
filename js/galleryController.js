@@ -1,8 +1,8 @@
 'use strict'
 
 function renderGallery() {
-    document.querySelector('.meme-container').hidden = true
-    document.querySelector('.gallery').hidden = false
+    document.querySelector('.meme-container').classList.add('hidden')
+    document.querySelector('.gallery').classList.remove('hidden')
     const gallery = getGallery()
     const urls = gallery.map((img) => {
         return `<img src="${img.url}" onclick="onImgSelect(${img.id})">`
@@ -14,7 +14,5 @@ function renderGallery() {
 function onImgSelect(id) {
     setImg(id)
     renderMeme()
-    document.querySelector('.meme-container').hidden = false
-    document.querySelector('.gallery').hidden = true
-
+    console.log("Meme container should be visible, gallery hidden")
 }

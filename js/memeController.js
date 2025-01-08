@@ -7,9 +7,12 @@ function onInit() {
     gCanvas = document.querySelector('canvas')
     gCtx = gCanvas.getContext('2d')
     renderMeme()
+    addLine()
 }
 
 function renderMeme() {
+    document.querySelector('.meme-container').classList.remove('hidden')
+    document.querySelector('.gallery').classList.add('hidden')
     const meme = getMeme()
     let path = `./imgs/${meme.selectedImgId}.jpg`
     const lines = meme.lines
@@ -75,7 +78,7 @@ function onSetLineTxt(txt) {
 function onDownloadCanvas(elLink) {
     const dataUrl = gCanvas.toDataURL()
     elLink.href = dataUrl
-    elLink.download = 'canvas'
+    elLink.download = 'meme'
 }
 
 function onSetColor(color) {
@@ -89,17 +92,18 @@ function onChangeSize(factor) {
 }
 
 function onAddLine() {
+    const meme = getMeme()
     addLine()
     renderMeme()
+    document.querySelector('.text').value = meme.lines[meme.selectedLineIdx].txt
 }
 
 function onSwitchLine() {
     const meme = getMeme()
     setCurrLineIdx()
     renderMeme()
-    console.log(meme)
-    document.querySelector('.text').value = meme.lines[gMeme.selectedLineIdx].txt
-    document.querySelector('.color').value = meme.lines[gMeme.selectedLineIdx].color
+    document.querySelector('.text').value = meme.lines[meme.selectedLineIdx].txt
+    document.querySelector('.color').value = meme.lines[meme.selectedLineIdx].color
 }
 
 function drawRect(x, y, width, height) {
