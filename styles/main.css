@@ -8,11 +8,16 @@
     --gallery-border-color: #ccc;
 }
 
-
 /* Reset */
 html,
 body {
     height: 100%;
+}
+
+img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
 }
 
 *,
@@ -30,11 +35,7 @@ input {
     margin: 0;
 }
 
-img {
-    display: block;
-    width: 100%;
-    max-width: 100%;
-}
+
 
 /* Main Body and Layout */
 body {
