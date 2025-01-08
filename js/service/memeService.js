@@ -9,8 +9,15 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
+            id: 1,
             txt: 'I sometimes eat Falafel',
             size: 20,
+            color: 'red'
+        },
+        {
+            id: 2,
+            txt: 'and i like it',
+            size: 15,
             color: 'red'
         }
     ]
@@ -31,4 +38,13 @@ function getGallery() {
 
 function setImg(id) {
     gMeme.selectedImgId = id
+}
+
+function setColor(color) {
+    gMeme.lines[gMeme.selectedLineIdx].color = color
+}
+
+function changeSize(factor) {
+    if (factor < 0 && gMeme.lines[gMeme.selectedLineIdx].size < 12) return
+    gMeme.lines[gMeme.selectedLineIdx].size += factor
 }
