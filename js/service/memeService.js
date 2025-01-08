@@ -1,7 +1,7 @@
 'use strict'
 var gImgs = [
-    { id: 1, url: '../../imgs/1.jpg', keywords: ['funny', 'cat'] },
-    { id: 2, url: '../../imgs/2.jpg', keywords: ['funny', 'cat'] }
+    { id: 1, url: './imgs/1.jpg', keywords: ['funny', 'cat'] },
+    { id: 2, url: './imgs/2.jpg', keywords: ['funny', 'cat'] }
 ]
 var gMeme = {
     selectedImgId: 5,
@@ -50,6 +50,4 @@ function addLine() {
 function setCurrLineIdx() {
     gMeme.selectedLineIdx++
     if (gMeme.selectedLineIdx >= gMeme.lines.length) gMeme.selectedLineIdx = 0
-    console.log('lines.length', gMeme.lines.length)
-    console.log('gMeme.selectedLineIdx', gMeme.selectedLineIdx)
 }

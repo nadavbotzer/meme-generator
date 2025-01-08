@@ -11,7 +11,7 @@ function onInit() {
 
 function renderMeme() {
     const meme = getMeme()
-    let path = `../imgs/${meme.selectedImgId}.jpg`
+    let path = `./imgs/${meme.selectedImgId}.jpg`
     const lines = meme.lines
 
     renderImage(path, () => {
