@@ -58,6 +58,8 @@ body {
     box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.1);
     overflow: hidden;
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Header */
@@ -90,7 +92,10 @@ nav a {
 main {
     padding: 1.25rem;
     width: 100%;
-    height: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    /* height: 100%; */
 }
 
 /* Options Section */
@@ -177,6 +182,8 @@ canvas {
     gap: 0.625rem;
     justify-content: center;
     padding: 0.625rem 0;
+    overflow: auto;
+    height: 100%;
 }
 
 .gallery img {

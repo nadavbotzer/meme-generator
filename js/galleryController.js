@@ -1,9 +1,9 @@
 'use strict'
 
 function renderGallery() {
+    const gallery = getGallery()
     document.querySelector('.meme-container').classList.add('hidden')
     document.querySelector('.gallery').classList.remove('hidden')
-    const gallery = getGallery()
     const urls = gallery.map((img) => {
         return `<img src="${img.url}" onclick="onImgSelect(${img.id})">`
     })

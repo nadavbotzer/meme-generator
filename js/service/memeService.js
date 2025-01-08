@@ -1,13 +1,23 @@
 'use strict'
-var gImgs = [
-    { id: 1, url: './imgs/1.jpg', keywords: ['funny', 'cat'] },
-    { id: 2, url: './imgs/2.jpg', keywords: ['funny', 'cat'] }
-]
+var gImgs = createGallery()
 var gMeme = {
     selectedImgId: 5,
     selectedLineIdx: 0,
     lines: [],
     linesCounter: 0
+}
+
+function createGallery() {
+    const imgs = []
+    for (let i = 0; i < 18; i++) {
+        const img = {
+            id: i + 1,
+            url: `./imgs/${i + 1}.jpg`,
+            keywords: ['key', 'word']
+        }
+        imgs.push(img)
+    }
+    return imgs
 }
 
 
