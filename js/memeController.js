@@ -81,3 +81,8 @@ function onAddLine() {
     addLine()
     renderMeme()
 }
+
+function onSwitchLine() {
+    setCurrLineIdx()
+    renderMeme()
+}
