@@ -49,3 +49,14 @@ function changeSize(factor) {
     if (factor < 0 && gMeme.lines[gMeme.selectedLineIdx].size < 12) return
     gMeme.lines[gMeme.selectedLineIdx].size += factor
 }
+
+function addLine() {
+    const line = {
+        id: ++gMeme.linesCounter,
+        txt: 'Edit your text',
+        size: 20,
+        color: 'red'
+    }
+    gMeme.lines.push(line)
+    gMeme.selectedLineIdx = gMeme.linesCounter - 1
+}

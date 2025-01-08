@@ -76,3 +76,8 @@ function onChangeSize(factor) {
     changeSize(factor)
     renderMeme()
 }
+
+function onAddLine() {
+    addLine()
+    renderMeme()
+}
