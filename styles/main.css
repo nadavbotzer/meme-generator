@@ -101,7 +101,6 @@ main {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.625rem;
-    max-width: 25rem;
     margin-bottom: 1.25rem;
     margin-inline: auto;
 }
