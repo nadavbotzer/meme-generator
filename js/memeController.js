@@ -73,7 +73,7 @@ function renderText({ txt, size, color, id, font, align, x, y }) {
     const height = textSizes.actualBoundingBoxAscent + textSizes.actualBoundingBoxDescent
     setLineMeasures(id, width, height)
     setLineCords(id, actualX, actualY)
-    if (meme.selectedLineIdx + 1 === id) {
+    if (meme.selectedLineIdx + 1 === id && meme.selectedLineIdx !== null) {
         drawRect(
             actualX - 5,
             actualY - 5,
@@ -145,6 +145,12 @@ function onChangeHeight(factor) {
     setY(factor)
     renderMeme()
 }
+
+function onUmMarkText(idx) {
+    selectedLineIdx(idx)
+    renderMeme()
+}
+
 
 function onDown(ev) {
     gIsMouseIsDown = true

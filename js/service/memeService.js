@@ -64,6 +64,9 @@ function setCurrLineIdx() {
     if (gMeme.selectedLineIdx >= gMeme.lines.length) gMeme.selectedLineIdx = 0
 }
 
+function selectedLineIdx(idx) {
+    gMeme.selectedLineIdx = idx
+}
 function setLineCords(id, x, y) {
     gMeme.lines[id - 1].x = x
     gMeme.lines[id - 1].y = y
