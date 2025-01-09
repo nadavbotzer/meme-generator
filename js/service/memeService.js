@@ -86,3 +86,6 @@ function setSelectedLine(line) {
     gMeme.selectedLineIdx = line.id - 1
 }
 
+function setY(factor) {
+    gMeme.lines[gMeme.selectedLineIdx].y -= factor
+}

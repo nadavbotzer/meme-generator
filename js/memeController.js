@@ -36,7 +36,7 @@ function renderImage(imageSrc, callback) {
     }
 }
 
-function renderText({ txt, size, color, id, font, align }) {
+function renderText({ txt, size, color, id, font, align, x, y }) {
     const meme = getMeme()
 
     gCtx.font = `bold ${size}px ${font}`
@@ -45,23 +45,28 @@ function renderText({ txt, size, color, id, font, align }) {
     gCtx.textAlign = align
     let textX
     let textY
-    if (id === 1) {
-        textX = gCanvas.width / 2
-        textY = 50
-    }
-    else if (id === 2) {
-        textX = gCanvas.width / 2
-        textY = gCanvas.height - 50
+    let textSizes = gCtx.measureText(txt)
+    if (!x && !y) {
+        if (id === 1) {
+            textX = gCanvas.width / 2
+            textY = 50
+        }
+        else if (id === 2) {
+            textX = gCanvas.width / 2
+            textY = gCanvas.height - 50
+        }
+        else {
+            textX = gCanvas.width / 2
+            textY = gCanvas.height / 2
+        }
     }
     else {
-        textX = gCanvas.width / 2
-        textY = gCanvas.height / 2
+        textX = x + textSizes.actualBoundingBoxLeft
+        textY = y + textSizes.actualBoundingBoxAscent
     }
 
     gCtx.fillText(txt, textX, textY)
     gCtx.strokeText(txt, textX, textY)
-
-    let textSizes = gCtx.measureText(txt)
     const actualX = textX - textSizes.actualBoundingBoxLeft
     const actualY = textY - textSizes.actualBoundingBoxAscent
     const width = textSizes.width
@@ -136,6 +141,10 @@ function setValuesToCurrentLine() {
     document.querySelector('.text-align').value = meme.lines[meme.selectedLineIdx].align
 }
 
+function onChangeHeight(factor) {
+    setY(factor)
+    renderMeme()
+}
 
 function onDown(ev) {
     gIsMouseIsDown = true
