@@ -61,8 +61,8 @@ function renderText({ txt, size, color, id, font, align, x, y }) {
         }
     }
     else {
-        textX = x + textSizes.actualBoundingBoxLeft
-        textY = y + textSizes.actualBoundingBoxAscent
+        textX = x
+        textY = y
     }
 
     gCtx.fillText(txt, textX, textY)
@@ -72,7 +72,7 @@ function renderText({ txt, size, color, id, font, align, x, y }) {
     const width = textSizes.width
     const height = textSizes.actualBoundingBoxAscent + textSizes.actualBoundingBoxDescent
     setLineMeasures(id, width, height)
-    setLineCords(id, actualX, actualY)
+    setLineCords(id, textX, textY)
     if (meme.selectedLineIdx + 1 === id && meme.selectedLineIdx !== null) {
         drawRect(
             actualX - 5,
@@ -128,8 +128,18 @@ function onSetFont(font) {
 }
 
 function onSetAlign(align) {
+    console.log('aligning')
     const meme = getMeme()
-    meme.lines[meme.selectedLineIdx].align = align
+    const currLineId = meme.selectedLineIdx
+    const line = meme.lines[currLineId]
+    switch (align) {
+        case 'center': setX(currLineId, gCanvas.width / 2)
+            break;
+        case 'start': setX(currLineId, line.width / 2 + 10)
+            break;
+        case 'end': setX(currLineId, gCanvas.width - 20 - (line.width / 2))
+            break;
+    }
     renderMeme()
 }
 
@@ -142,7 +152,7 @@ function setValuesToCurrentLine() {
 }
 
 function onChangeHeight(factor) {
-    setY(factor)
+    changeY(factor)
     renderMeme()
 }
 
