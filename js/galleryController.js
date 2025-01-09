@@ -14,5 +14,4 @@ function renderGallery() {
 function onImgSelect(id) {
     setImg(id)
     renderMeme()
-    console.log("Meme container should be visible, gallery hidden")
 }

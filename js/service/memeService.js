@@ -51,7 +51,9 @@ function addLine() {
         id: ++gMeme.linesCounter,
         txt: 'Edit your text',
         size: 20,
-        color: '#ffffff'
+        color: '#ffffff',
+        font: 'Impact',
+        align: 'center'
     }
     gMeme.lines.push(line)
     gMeme.selectedLineIdx = gMeme.linesCounter - 1
@@ -61,3 +63,26 @@ function setCurrLineIdx() {
     gMeme.selectedLineIdx++
     if (gMeme.selectedLineIdx >= gMeme.lines.length) gMeme.selectedLineIdx = 0
 }
+
+function setLineCords(id, x, y) {
+    gMeme.lines[id - 1].x = x
+    gMeme.lines[id - 1].y = y
+}
+
+function setLineMeasures(id, w, h) {
+    gMeme.lines[id - 1].width = w
+    gMeme.lines[id - 1].height = h
+}
+
+function getClickedLine(clickedPos) {
+    const lines = gMeme.lines
+    return lines.find((line) => {
+        return line.x < clickedPos.x && clickedPos.x < line.x + line.width && line.y < clickedPos.y && clickedPos.y < line.y + line.height
+
+    })
+}
+
+function setSelectedLine(line) {
+    gMeme.selectedLineIdx = line.id - 1
+}
+

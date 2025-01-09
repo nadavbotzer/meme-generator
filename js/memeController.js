@@ -2,6 +2,7 @@
 
 let gCanvas
 let gCtx
+let gIsMouseIsDown = false
 
 function onInit() {
     gCanvas = document.querySelector('canvas')
@@ -19,8 +20,7 @@ function renderMeme() {
 
     renderImage(path, () => {
         lines.forEach(line => {
-            let { txt, size, color, id } = line
-            renderText(txt, size, color, id)
+            renderText(line)
         })
     })
 
@@ -36,11 +36,13 @@ function renderImage(imageSrc, callback) {
     }
 }
 
-function renderText(text, size, color, id) {
-    gCtx.font = `${size}px Impact`
+function renderText({ txt, size, color, id, font, align }) {
+    const meme = getMeme()
+
+    gCtx.font = `bold ${size}px ${font}`
     gCtx.fillStyle = color
     gCtx.strokeStyle = 'black'
-    gCtx.textAlign = 'center'
+    gCtx.textAlign = align
     let textX
     let textY
     if (id === 1) {
@@ -56,16 +58,22 @@ function renderText(text, size, color, id) {
         textY = gCanvas.height / 2
     }
 
-    gCtx.fillText(text, textX, textY)
-    gCtx.strokeText(text, textX, textY)
-    const meme = getMeme()
+    gCtx.fillText(txt, textX, textY)
+    gCtx.strokeText(txt, textX, textY)
+
+    let textSizes = gCtx.measureText(txt)
+    const actualX = textX - textSizes.actualBoundingBoxLeft
+    const actualY = textY - textSizes.actualBoundingBoxAscent
+    const width = textSizes.width
+    const height = textSizes.actualBoundingBoxAscent + textSizes.actualBoundingBoxDescent
+    setLineMeasures(id, width, height)
+    setLineCords(id, actualX, actualY)
     if (meme.selectedLineIdx + 1 === id) {
-        let textSizes = gCtx.measureText(text)
         drawRect(
-            textX - textSizes.actualBoundingBoxLeft - 5,
-            textY - textSizes.actualBoundingBoxAscent - 5,
-            textSizes.width + 10,
-            textSizes.actualBoundingBoxAscent + textSizes.actualBoundingBoxDescent + 10
+            actualX - 5,
+            actualY - 5,
+            width + 10,
+            height + 10
         )
     }
 }
@@ -92,21 +100,74 @@ function onChangeSize(factor) {
 }
 
 function onAddLine() {
-    const meme = getMeme()
     addLine()
     renderMeme()
-    document.querySelector('.text').value = meme.lines[meme.selectedLineIdx].txt
+    setValuesToCurrentLine()
 }
 
 function onSwitchLine() {
-    const meme = getMeme()
     setCurrLineIdx()
     renderMeme()
-    document.querySelector('.text').value = meme.lines[meme.selectedLineIdx].txt
-    document.querySelector('.color').value = meme.lines[meme.selectedLineIdx].color
+    setValuesToCurrentLine()
 }
 
 function drawRect(x, y, width, height) {
     gCtx.strokeStyle = 'black'
     gCtx.strokeRect(x, y, width, height)
+}
+
+function onSetFont(font) {
+    const meme = getMeme()
+    meme.lines[meme.selectedLineIdx].font = font
+    renderMeme()
+}
+
+function onSetAlign(align) {
+    const meme = getMeme()
+    meme.lines[meme.selectedLineIdx].align = align
+    renderMeme()
+}
+
+function setValuesToCurrentLine() {
+    const meme = getMeme()
+    document.querySelector('.text').value = meme.lines[meme.selectedLineIdx].txt
+    document.querySelector('.color').value = meme.lines[meme.selectedLineIdx].color
+    document.querySelector('.font').value = meme.lines[meme.selectedLineIdx].font
+    document.querySelector('.text-align').value = meme.lines[meme.selectedLineIdx].align
+}
+
+
+function onDown(ev) {
+    gIsMouseIsDown = true
+    const clickedPos = getEvPos(ev)
+    const clickedLine = getClickedLine(clickedPos)
+    if (clickedLine) {
+        setSelectedLine(clickedLine)
+        renderMeme()
+    }
+
+
+}
+
+function onUp() {
+    gIsMouseIsDown = false
+}
+
+function getEvPos(ev) {
+    const TOUCH_EVS = ['touchstart', 'touchmove', 'touchend']
+    const rect = ev.target.getBoundingClientRect()
+
+    if (TOUCH_EVS.includes(ev.type)) {
+        ev.preventDefault()
+        const touch = ev.changedTouches[0]
+        return {
+            x: ((touch.clientX - rect.left) / rect.width) * ev.target.width,
+            y: ((touch.clientY - rect.top) / rect.height) * ev.target.height,
+        }
+    } else {
+        return {
+            x: ((ev.clientX - rect.left) / rect.width) * ev.target.width,
+            y: ((ev.clientY - rect.top) / rect.height) * ev.target.height,
+        }
+    }
 }
