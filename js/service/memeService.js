@@ -59,6 +59,15 @@ function addLine() {
     gMeme.selectedLineIdx = gMeme.linesCounter - 1
 }
 
+function deleteLine() {
+    const idx = gMeme.selectedLineIdx
+    if (idx !== -1 && gMeme.lines.length > 0) {
+        gMeme.lines.splice(idx, 1)
+        gMeme.linesCounter--
+        onUmMarkText()
+    }
+}
+
 function setCurrLineIdx() {
     gMeme.selectedLineIdx++
     if (gMeme.selectedLineIdx >= gMeme.lines.length) gMeme.selectedLineIdx = 0
@@ -86,6 +95,14 @@ function getClickedLine(clickedPos) {
         return line.actualX < clickedPos.x && clickedPos.x < line.actualX + line.width && line.actualY < clickedPos.y && clickedPos.y < line.actualY + line.height
 
     })
+}
+
+
+function setSelectedLineByIndex(idx) {
+    const meme = getMeme()
+    if (idx >= 0 && idx < meme.lines.length) {
+        meme.selectedLineIdx = idx
+    }
 }
 
 function setSelectedLine(line) {

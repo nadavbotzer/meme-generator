@@ -88,6 +88,11 @@ function onSetLineTxt(txt) {
     renderMeme()
 }
 
+function onDeleteText() {
+    deleteLine()
+    renderMeme()
+}
+
 function onDownloadCanvas(elLink) {
     const dataUrl = gCanvas.toDataURL()
     elLink.href = dataUrl
@@ -170,8 +175,6 @@ function onDown(ev) {
         setSelectedLine(clickedLine)
         renderMeme()
     }
-
-
 }
 
 function onUp() {
