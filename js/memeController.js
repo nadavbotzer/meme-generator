@@ -72,7 +72,7 @@ function renderText({ txt, size, color, id, font, align, x, y }) {
     const width = textSizes.width
     const height = textSizes.actualBoundingBoxAscent + textSizes.actualBoundingBoxDescent
     setLineMeasures(id, width, height)
-    setLineCords(id, textX, textY)
+    setLineCords(id, textX, textY, actualX, actualY)
     if (meme.selectedLineIdx + 1 === id && meme.selectedLineIdx !== null) {
         drawRect(
             actualX - 5,

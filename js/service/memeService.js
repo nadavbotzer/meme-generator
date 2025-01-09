@@ -67,9 +67,12 @@ function setCurrLineIdx() {
 function selectedLineIdx(idx) {
     gMeme.selectedLineIdx = idx
 }
-function setLineCords(id, x, y) {
+function setLineCords(id, x, y, actualX, actualY) {
     gMeme.lines[id - 1].x = x
     gMeme.lines[id - 1].y = y
+    gMeme.lines[id - 1].actualX = actualX
+    gMeme.lines[id - 1].actualY = actualY
+
 }
 
 function setLineMeasures(id, w, h) {
@@ -80,7 +83,7 @@ function setLineMeasures(id, w, h) {
 function getClickedLine(clickedPos) {
     const lines = gMeme.lines
     return lines.find((line) => {
-        return line.x < clickedPos.x && clickedPos.x < line.x + line.width && line.y < clickedPos.y && clickedPos.y < line.y + line.height
+        return line.actualX < clickedPos.x && clickedPos.x < line.actualX + line.width && line.actualY < clickedPos.y && clickedPos.y < line.actualY + line.height
 
     })
 }
