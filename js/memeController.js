@@ -7,14 +7,14 @@ let gIsMouseIsDown = false
 function onInit() {
     gCanvas = document.querySelector('canvas')
     gCtx = gCanvas.getContext('2d')
-    renderMeme()
-    addLine()
-    setValuesToCurrentLine()
+    renderGallery()
 }
 
 function renderMeme() {
     document.querySelector('.meme-container').classList.remove('hidden')
+    document.querySelector('.options').classList.remove('hidden')
     document.querySelector('.gallery').classList.add('hidden')
+
     const meme = getMeme()
     let path = `./imgs/${meme.selectedImgId}.jpg`
     const lines = meme.lines

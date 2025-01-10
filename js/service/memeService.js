@@ -116,7 +116,7 @@ function getClickedLine(clickedPos) {
 
 function setSelectedLineByIndex(idx) {
     if (idx >= 0 && idx < gMeme.lines.length) {
-        gMeme.selectedLineIdx = idx
+        selectedLineIdx(idx)
     }
 }
 
