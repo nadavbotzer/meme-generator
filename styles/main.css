@@ -94,6 +94,7 @@ main {
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    overflow: auto;
 }
 
 /* Options Section */
@@ -203,21 +204,11 @@ canvas {
     display: none;
 }
 
-@media (max-width: 42.5rem) {
+@media (max-width: 750px) {
 
     .options {
         grid-template-columns: 1fr;
-    }
-
-    .text,
-    .color {
-        width: 100%;
-    }
-
-    .btn {
-        padding: 0.5rem;
-        width: 100%;
-        font-size: 1rem;
+        gap: 0.25rem;
     }
 
     .canvas-container {
@@ -229,6 +220,6 @@ canvas {
     }
 
     .options-group:last-child {
-        margin-top: .25rem;
+        margin-top: 0;
     }
 }
