@@ -92,6 +92,13 @@ function onSetLineTxt(txt) {
 function onDeleteText() {
     deleteLine()
     renderMeme()
+    document.querySelector('.text').value = ''
+}
+
+function onAddLine() {
+    addLine()
+    renderMeme()
+    setValuesToCurrentLine()
 }
 
 function onDownloadCanvas(elLink) {
@@ -108,12 +115,6 @@ function onSetColor(color) {
 function onChangeSize(factor) {
     changeSize(factor)
     renderMeme()
-}
-
-function onAddLine(txt = 'Edit your text') {
-    addLine(txt)
-    renderMeme()
-    setValuesToCurrentLine()
 }
 
 function onSwitchLine() {
@@ -164,10 +165,15 @@ function onChangeHeight(factor) {
 function onUmMarkText(idx) {
     selectedLineIdx(idx)
     renderMeme()
+    document.querySelector('.text').value = ''
+
 }
 
 function onSubmitText(txt) {
-    if (txt !== '') { addLine(txt) } else { deleteLine() }
+    if (txt === '') {
+        deleteLine()
+    }
+    else if (getSelectedLineIdx() === -1) addLine(txt)
     renderMeme()
 }
 function onDown(ev) {
@@ -180,6 +186,7 @@ function onDown(ev) {
             gMeme.selectedLineIdx = clickedIndex
         }
         renderMeme()
+        setValuesToCurrentLine()
     }
     else { onUmMarkText(-1) }
 }

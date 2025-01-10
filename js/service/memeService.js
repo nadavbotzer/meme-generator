@@ -1,7 +1,7 @@
 'use strict'
 var gImgs = createGallery()
 var gMeme = {
-    selectedImgId: 5,
+    selectedImgId: 1,
     selectedLineIdx: -1,
     lines: [],
     linesCounter: 0
@@ -24,8 +24,12 @@ function getMeme() {
     return gMeme
 }
 
+function getSelectedLineIdx() {
+
+    return gMeme.selectedLineIdx
+}
 function setLineTxt(txt) {
-    if (gMeme.lines.length) gMeme.lines[gMeme.selectedLineIdx].txt = txt
+    if (gMeme.lines.length && getSelectedLineIdx() !== -1) gMeme.lines[gMeme.selectedLineIdx].txt = txt
 }
 
 function getGallery() {
