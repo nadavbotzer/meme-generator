@@ -95,8 +95,8 @@ function onDeleteText() {
     document.querySelector('.text').value = ''
 }
 
-function onAddLine() {
-    addLine()
+function onAddLine(txt = 'Edit your text') {
+    addLine(txt)
     renderMeme()
     setValuesToCurrentLine()
 }
