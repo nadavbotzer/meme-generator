@@ -153,6 +153,10 @@ main {
     text-align: center;
 }
 
+.emoji {
+    font-size: 1.75rem;
+}
+
 .btn:hover {
     background-color: var(--primary-hover);
 }
@@ -218,5 +222,9 @@ canvas {
 
     .canvas-container {
         max-width: 22rem;
+    }
+
+    .emoji {
+        font-size: 1.35rem;
     }
 }

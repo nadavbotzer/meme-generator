@@ -35,7 +35,7 @@
                 </div>
                 <div class="options-group justify-end">
                     <div class="btn">
-                        <label for="font">Fonts</label>
+                        <label for="font">Font:</label>
                         <select onchange="onSetFont(value)" class="font" id="font">
                             <option value="Arial">Arial</option>
                             <option value="David">David</option>
@@ -44,7 +44,7 @@
                         </select>
                     </div>
                     <div class="btn">
-                        <label for="text-align">Align</label>
+                        <label for="text-align">Align:</label>
                         <select onchange="onSetAlign(value)" class="text-align" id="text-align">
                             <option value="start">Start</option>
                             <option value="center" selected="selected">Center</option>
@@ -55,10 +55,10 @@
                     <button class="btn" onclick="onChangeHeight(-5)">Down</button>
                 </div>
                 <div class="options-group justify-end">
-                    <span class="btn" onclick="onAddLine('🎃')">🎃</span>
-                    <span class="btn" onclick="onAddLine('😎')">😎</span>
-                    <span class="btn" onclick="onAddLine('🤣')">🤣</span>
-                    <span class="btn" onclick="onAddLine('🤑')">🤑</span>
+                    <span class="btn emoji" onclick="onAddLine('🎃')">🎃</span>
+                    <span class="btn emoji" onclick="onAddLine('😎')">😎</span>
+                    <span class="btn emoji" onclick="onAddLine('🤣')">🤣</span>
+                    <span class="btn emoji" onclick="onAddLine('🤑')">🤑</span>
                 </div>
                 <div class="options-group justify-center">
                     <a class="btn" href="#" onclick="onDownloadCanvas(this)">Download</a>
