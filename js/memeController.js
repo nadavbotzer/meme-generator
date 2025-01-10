@@ -134,16 +134,15 @@ function onSetFont(font) {
 }
 
 function onSetAlign(align) {
-    console.log('aligning')
     const meme = getMeme()
     const currLineId = meme.selectedLineIdx
     const line = meme.lines[currLineId]
     switch (align) {
         case 'center': setX(currLineId, gCanvas.width / 2)
             break;
-        case 'start': setX(currLineId, line.width / 2 + 10)
+        case 'start': setX(currLineId, line.width / 2 + 15)
             break;
-        case 'end': setX(currLineId, gCanvas.width - 20 - (line.width / 2))
+        case 'end': setX(currLineId, gCanvas.width - 15 - (line.width / 2))
             break;
     }
     renderMeme()
@@ -182,6 +181,7 @@ function onDown(ev) {
         }
         renderMeme()
     }
+    else { onUmMarkText(-1) }
 }
 
 

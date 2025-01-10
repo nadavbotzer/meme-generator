@@ -67,12 +67,7 @@ function deleteLine() {
         gMeme.lines.splice(idx, 1)
         gMeme.linesCounter--
         gMeme.lines.forEach((line, i) => line.id = i + 1)
-        if (gMeme.lines.length === 0) {
-            gMeme.selectedLineIdx = -1
-        } else if (gMeme.selectedLineIdx >= gMeme.lines.length) {
-            gMeme.selectedLineIdx = gMeme.lines.length - 1
-        }
-        onUmMarkText(gMeme.selectedLineIdx)
+        selectedLineIdx(-1)
     }
 }
 
