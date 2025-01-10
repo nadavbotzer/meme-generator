@@ -48,10 +48,10 @@ function changeSize(factor) {
     gMeme.lines[gMeme.selectedLineIdx].size += factor
 }
 
-function addLine() {
+function addLine(txt = 'Edit your text') {
     const line = {
         id: ++gMeme.linesCounter,
-        txt: 'Edit your text',
+        txt,
         size: 20,
         color: '#ffffff',
         font: 'Impact',

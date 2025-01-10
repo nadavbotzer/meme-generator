@@ -109,8 +109,8 @@ function onChangeSize(factor) {
     renderMeme()
 }
 
-function onAddLine() {
-    addLine()
+function onAddLine(txt = 'Edit your text') {
+    addLine(txt)
     renderMeme()
     setValuesToCurrentLine()
 }
