@@ -202,7 +202,8 @@ canvas {
 @media (max-width: 37.5rem) {
 
     .options {
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: 1fr;
     }
 
     .text,

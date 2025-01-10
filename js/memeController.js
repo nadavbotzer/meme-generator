@@ -43,24 +43,23 @@ function renderText({ txt, size, color, id, font, align, x, y }) {
     gCtx.fillStyle = color
     gCtx.strokeStyle = 'black'
     gCtx.textAlign = align
+
     let textX
     let textY
     let textSizes = gCtx.measureText(txt)
+
     if (!x && !y) {
         if (id === 1) {
             textX = gCanvas.width / 2
             textY = 50
-        }
-        else if (id === 2) {
+        } else if (id === 2) {
             textX = gCanvas.width / 2
             textY = gCanvas.height - 50
-        }
-        else {
+        } else {
             textX = gCanvas.width / 2
             textY = gCanvas.height / 2
         }
-    }
-    else {
+    } else {
         textX = x
         textY = y
     }
@@ -71,9 +70,10 @@ function renderText({ txt, size, color, id, font, align, x, y }) {
     const actualY = textY - textSizes.actualBoundingBoxAscent
     const width = textSizes.width
     const height = textSizes.actualBoundingBoxAscent + textSizes.actualBoundingBoxDescent
+
     setLineMeasures(id, width, height)
     setLineCords(id, textX, textY, actualX, actualY)
-    if (meme.selectedLineIdx + 1 === id && meme.selectedLineIdx !== null) {
+    if (meme.selectedLineIdx === id - 1) {
         drawRect(
             actualX - 5,
             actualY - 5,
@@ -166,16 +166,19 @@ function onUmMarkText(idx) {
     renderMeme()
 }
 
-
 function onDown(ev) {
     gIsMouseIsDown = true
     const clickedPos = getEvPos(ev)
     const clickedLine = getClickedLine(clickedPos)
     if (clickedLine) {
-        setSelectedLine(clickedLine)
+        const clickedIndex = gMeme.lines.findIndex(line => line.id === clickedLine.id)
+        if (clickedIndex !== -1) {
+            gMeme.selectedLineIdx = clickedIndex
+        }
         renderMeme()
     }
 }
+
 
 function onUp() {
     gIsMouseIsDown = false
