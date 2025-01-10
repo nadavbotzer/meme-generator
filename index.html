@@ -34,17 +34,23 @@
                     <button class="btn" onclick="onDeleteText()">Delete</button>
                 </div>
                 <div class="options-group justify-end">
-                    <select onchange="onSetFont(value)" class="font">
-                        <option value="Arial">Arial</option>
-                        <option value="David">David</option>
-                        <option value="Tahoma">Tahoma</option>
-                        <option value="Impact" selected="selected">Impact</option>
-                    </select>
-                    <select onchange="onSetAlign(value)" class="text-align">
-                        <option value="start">Start</option>
-                        <option value="center" selected="selected">Center</option>
-                        <option value="end">End</option>
-                    </select>
+                    <div class="btn">
+                        <label for="font">Fonts</label>
+                        <select onchange="onSetFont(value)" class="font" id="font">
+                            <option value="Arial">Arial</option>
+                            <option value="David">David</option>
+                            <option value="Tahoma">Tahoma</option>
+                            <option value="Impact" selected="selected">Impact</option>
+                        </select>
+                    </div>
+                    <div class="btn">
+                        <label for="text-align">Align</label>
+                        <select onchange="onSetAlign(value)" class="text-align" id="text-align">
+                            <option value="start">Start</option>
+                            <option value="center" selected="selected">Center</option>
+                            <option value="end">End</option>
+                        </select>
+                    </div>
                     <button class="btn" onclick="onChangeHeight(5)">Up</button>
                     <button class="btn" onclick="onChangeHeight(-5)">Down</button>
                 </div>
