@@ -52,7 +52,7 @@ function addLine(txt = 'Edit your text') {
     const line = {
         id: ++gMeme.linesCounter,
         txt,
-        size: 20,
+        size: 34,
         color: '#ffffff',
         font: 'Impact',
         align: 'center'
@@ -123,7 +123,7 @@ function setSelectedLineByIndex(idx) {
 function setSelectedLine(line) {
     const idx = gMeme.lines.findIndex(l => l.id === line.id)
     if (idx !== -1) {
-        gMeme.selectedLineIdx = idx
+        selectedLineIdx(idx)
     }
 }
 

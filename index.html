@@ -24,14 +24,14 @@
                 <input class="text" type="text" placeholder="Edit your text" oninput="onSetLineTxt(value)">
                 <div class="options-group">
                     <input class="color" type="color" id="color" value="#ffffff" onchange="onSetColor(value)">
-                    <button class="btn" onclick="onChangeSize(-2)">-</button>
-                    <button class="btn" onclick="onChangeSize(2)">+</button>
+                    <button class="btn emoji" onclick="onChangeSize(-2)">➕</button>
+                    <button class="btn emoji" onclick="onChangeSize(2)">➖</button>
                 </div>
                 <div class="options-group justify-end">
                     <button class="btn" onclick="onAddLine()">Add Text</button>
-                    <button class="btn" onclick="onSwitchLine()">Switch lines</button>
+                    <button class="btn" onclick="onDeleteText()">Delete Text</button>
+                    <button class="btn" onclick="onSwitchLine()">Switch Lines</button>
                     <button class="btn" onclick="onUmMarkText(-1)">Unmark Text</button>
-                    <button class="btn" onclick="onDeleteText()">Delete</button>
                 </div>
                 <div class="options-group justify-end">
                     <div class="btn">
@@ -51,8 +51,8 @@
                             <option value="end">End</option>
                         </select>
                     </div>
-                    <button class="btn" onclick="onChangeHeight(5)">Up</button>
-                    <button class="btn" onclick="onChangeHeight(-5)">Down</button>
+                    <button class="btn emoji" onclick="onChangeHeight(5)">⬆</button>
+                    <button class="btn emoji" onclick="onChangeHeight(-5)">⬇</button>
                 </div>
                 <div class="options-group justify-end">
                     <span class="btn emoji" onclick="onAddLine('🎃')">🎃</span>

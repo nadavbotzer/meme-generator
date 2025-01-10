@@ -117,7 +117,7 @@ main {
 
 .options-group:last-child {
     grid-column: 1/-1;
-    margin-top: 1rem;
+    margin-top: .5rem;
 }
 
 .justify-end {
@@ -203,7 +203,7 @@ canvas {
     display: none;
 }
 
-@media (max-width: 37.5rem) {
+@media (max-width: 42.5rem) {
 
     .options {
         display: grid;
@@ -218,6 +218,7 @@ canvas {
     .btn {
         padding: 0.5rem;
         width: 100%;
+        font-size: 1rem;
     }
 
     .canvas-container {
@@ -225,6 +226,10 @@ canvas {
     }
 
     .emoji {
-        font-size: 1.35rem;
+        font-size: 1.15rem;
+    }
+
+    .options-group:last-child {
+        margin-top: .25rem;
     }
 }
