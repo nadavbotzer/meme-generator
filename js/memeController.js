@@ -9,6 +9,7 @@ function onInit() {
     gCtx = gCanvas.getContext('2d')
     renderMeme()
     addLine()
+    setValuesToCurrentLine()
 }
 
 function renderMeme() {
