@@ -167,6 +167,10 @@ function onUmMarkText(idx) {
     renderMeme()
 }
 
+function onSubmitText(txt) {
+    if (txt !== '') { addLine(txt) } else { deleteLine() }
+    renderMeme()
+}
 function onDown(ev) {
     gIsMouseIsDown = true
     const clickedPos = getEvPos(ev)
