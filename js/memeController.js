@@ -129,12 +129,14 @@ function drawRect(x, y, width, height) {
 }
 
 function onSetFont(font) {
+    if (getSelectedLineIdx() === -1) return
     const meme = getMeme()
     meme.lines[meme.selectedLineIdx].font = font
     renderMeme()
 }
 
 function onSetAlign(align) {
+    if (getSelectedLineIdx() === -1) return
     const meme = getMeme()
     const currLineId = meme.selectedLineIdx
     const line = meme.lines[currLineId]
@@ -150,6 +152,7 @@ function onSetAlign(align) {
 }
 
 function setValuesToCurrentLine() {
+    if (getSelectedLineIdx() === -1) return
     const meme = getMeme()
     document.querySelector('.text').value = meme.lines[meme.selectedLineIdx].txt
     document.querySelector('.color').value = meme.lines[meme.selectedLineIdx].color
