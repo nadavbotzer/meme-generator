@@ -13,8 +13,10 @@ function renderGallery() {
 }
 
 function onImgSelect(id) {
+    const meme = getMeme()
     setImg(id)
     renderMeme()
-    addLine()
+    console.log(meme.linesCounter)
+    if (meme.linesCounter === 0) addLine()
     setValuesToCurrentLine()
 }
