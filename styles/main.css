@@ -212,6 +212,11 @@ canvas {
     }
 
     .btn {
+        padding: 0.5rem;
         width: 100%;
+    }
+
+    .canvas-container {
+        max-width: 22rem;
     }
 }
