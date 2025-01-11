@@ -147,7 +147,6 @@ function setX(idx, x) {
     }
 }
 
-
 ////util////
 function saveMemeToGallery() {
     const meme = getMeme()

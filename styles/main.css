@@ -217,7 +217,7 @@ canvas {
     margin-bottom: 1rem;
 }
 
-Use the same gallery style as the images for saved memes .saved-memes {
+.saved-memes {
     display: flex;
     flex-wrap: wrap;
     gap: 0.625rem;
