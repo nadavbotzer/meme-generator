@@ -3,6 +3,7 @@
 let gCanvas
 let gCtx
 let gIsMouseIsDown = false
+const MEME_KEY = 'savedMemes'
 
 function onInit() {
     gCanvas = document.querySelector('canvas')
@@ -14,6 +15,7 @@ function renderMeme() {
     document.querySelector('.meme-container').classList.remove('hidden')
     document.querySelector('.options').classList.remove('hidden')
     document.querySelector('.gallery').classList.add('hidden')
+    document.querySelector('.saved-gallery').classList.add('hidden')
 
     const meme = getMeme()
     let path = `./imgs/${meme.selectedImgId}.jpg`
@@ -179,19 +181,35 @@ function onSubmitText(txt) {
     else if (getSelectedLineIdx() === -1) addLine(txt)
     renderMeme()
 }
+
 function onDown(ev) {
     gIsMouseIsDown = true
+    const meme = getMeme()
     const clickedPos = getEvPos(ev)
     const clickedLine = getClickedLine(clickedPos)
+
     if (clickedLine) {
-        const clickedIndex = gMeme.lines.findIndex(line => line.id === clickedLine.id)
-        if (clickedIndex !== -1) {
-            gMeme.selectedLineIdx = clickedIndex
-        }
+        const idx = meme.lines.findIndex(line => line.id === clickedLine.id)
+        selectedLineIdx(idx)
         renderMeme()
         setValuesToCurrentLine()
+    } else {
+        onUmMarkText(-1)
     }
-    else { onUmMarkText(-1) }
+}
+
+function onMoveText(ev) {
+    if (!gIsMouseIsDown) return
+
+    const meme = getMeme()
+    const selectedLineIdx = meme.selectedLineIdx
+    if (selectedLineIdx === -1) return
+
+    const pos = getEvPos(ev)
+    meme.lines[selectedLineIdx].x = pos.x
+    meme.lines[selectedLineIdx].y = pos.y
+
+    renderMeme()
 }
 
 
@@ -217,3 +235,79 @@ function getEvPos(ev) {
         }
     }
 }
+
+function onSaveMeme() {
+    const memeData = getMeme()
+
+    const meme = {
+        image: gCanvas.toDataURL(),
+        memeData: memeData
+    };
+
+    const savedMemes = JSON.parse(localStorage.getItem(MEME_KEY)) || []
+    savedMemes.push(meme)
+
+    localStorage.setItem(MEME_KEY, JSON.stringify(savedMemes))
+
+    renderSavedMemes()
+}
+
+
+
+
+function renderSavedMemes() {
+    const savedMemesContainer = document.querySelector('.saved-memes')
+    const savedMemes = JSON.parse(localStorage.getItem(MEME_KEY)) || []
+
+    if (!savedMemesContainer) {
+        console.error('Saved memes container not found!')
+        return
+    }
+
+    savedMemesContainer.innerHTML = ''
+
+    savedMemes.forEach((meme, idx) => {
+        const memeElement = document.createElement('div')
+        memeElement.classList.add('saved-meme')
+        memeElement.classList.add('image')
+
+        const memeImage = new Image()
+        memeImage.src = meme.image
+        memeImage.alt = `Saved Meme ${idx + 1}`
+
+        memeImage.onload = () => {
+            memeElement.appendChild(memeImage)
+            savedMemesContainer.appendChild(memeElement)
+        }
+
+        memeImage.onerror = () => {
+            console.error('Failed to load saved meme image')
+        }
+
+        memeElement.onclick = () => onLoadMemeFromGallery(idx)
+    })
+}
+
+
+function onLoadMemeFromGallery(idx) {
+    const savedMemes = JSON.parse(localStorage.getItem(MEME_KEY)) || []
+    const meme = savedMemes[idx]
+
+    if (!meme) {
+        console.error('Meme not found')
+        return
+    }
+    setMeme(meme.memeData)
+    renderMeme()
+}
+
+function onShowGallery() {
+    renderSavedMemes()
+    document.querySelector('.saved-gallery').classList.remove('hidden')
+    document.querySelector('.meme-container').classList.add('hidden')
+    document.querySelector('.options').classList.add('hidden')
+}
+
+
+
+

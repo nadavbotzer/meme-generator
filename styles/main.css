@@ -168,6 +168,7 @@ main {
     justify-content: center;
     max-width: 25rem;
     margin: auto;
+    margin-top: 1.5rem;
 }
 
 canvas {
@@ -186,7 +187,8 @@ canvas {
     height: 100%;
 }
 
-.gallery img {
+.gallery img,
+.image {
     max-width: 12rem;
     max-height: 12rem;
     object-fit: cover;
@@ -212,7 +214,7 @@ canvas {
     }
 
     .canvas-container {
-        max-width: 22rem;
+        max-width: 20rem;
     }
 
     .emoji {

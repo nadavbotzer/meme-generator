@@ -5,6 +5,7 @@ function renderGallery() {
     document.querySelector('.meme-container').classList.add('hidden')
     document.querySelector('.options').classList.add('hidden')
     document.querySelector('.gallery').classList.remove('hidden')
+    document.querySelector('.saved-gallery').classList.add('hidden')
     const urls = gallery.map((img) => {
         return `<img src="${img.url}" onclick="onImgSelect(${img.id})">`
     })

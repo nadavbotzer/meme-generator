@@ -16,6 +16,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="#" onclick="renderGallery()">Gallery</a></li>
+                    <li><a href="#" onclick="onShowGallery()">Saved Memes</a></li>
                 </ul>
             </nav>
         </header>
@@ -29,10 +30,10 @@
                     <button class="btn emoji" onclick="onChangeSize(-2)">➖</button>
                 </div>
                 <div class="options-group justify-end">
-                    <button class="btn" onclick="onAddLine()">Add Text</button>
-                    <button class="btn" onclick="onDeleteText()">Delete Text</button>
-                    <button class="btn" onclick="onSwitchLine()">Switch Lines</button>
-                    <button class="btn" onclick="onUmMarkText(-1)">Unmark Text</button>
+                    <button class="btn" onclick="onAddLine()">Add Line</button>
+                    <button class="btn" onclick="onDeleteText()">Delete Line</button>
+                    <button class="btn" onclick="onSwitchLine()">Switch Line</button>
+                    <button class="btn" onclick="onUmMarkText(-1)">Unmark Line</button>
                 </div>
                 <div class="options-group justify-end">
                     <div class="btn">
@@ -64,16 +65,21 @@
                 <div class="options-group justify-center">
                     <a class="btn" href="#" onclick="onDownloadCanvas(this)">Download</a>
                     <a class="btn" href="#" onclick="onDownloadCanvas(this)">Share</a>
+                    <button class="btn" onclick="onSaveMeme()">Save to Gallery</button>
                 </div>
             </section>
             <section class="meme-container">
                 <div class="canvas-container">
-                    <canvas onmousedown="onDown(event)" onmouseup="onUp()" onmousemove="">
+                    <canvas onmousedown="onDown(event)" onmouseup="onUp()" onmousemove="onMoveText(event)">
 
                     </canvas>
                 </div>
             </section>
             <section class="gallery"></section>
+            <section class="saved-gallery hidden">
+                <h2>Saved Memes</h2>
+                <div class="saved-memes"></div>
+            </section>
         </main>
     </div>
     <script src="./js/service/memeService.js"></script>

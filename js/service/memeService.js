@@ -24,6 +24,9 @@ function getMeme() {
     return gMeme
 }
 
+function setMeme(meme) {
+    gMeme = meme
+}
 function getSelectedLineIdx() {
 
     return gMeme.selectedLineIdx
@@ -143,3 +146,19 @@ function setX(idx, x) {
         gMeme.lines[idx].x = x
     }
 }
+
+
+////util////
+function saveMemeToGallery() {
+    const meme = getMeme()
+    const savedMemes = JSON.parse(localStorage.getItem(MEME_KEY)) || [];
+
+    savedMemes.push({
+        imageSrc: gCanvas.toDataURL(),
+        memeData: meme
+    })
+
+    localStorage.setItem(MEME_KEY, JSON.stringify(savedMemes))
+}
+
+
