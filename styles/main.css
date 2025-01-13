@@ -6,6 +6,8 @@
     --input-border-color: #ccc;
     --canvas-border-color: #000;
     --gallery-border-color: #ccc;
+    --highlight-color: #ffcc00;
+    /* New highlight color */
 }
 
 /* Reset */
@@ -284,6 +286,50 @@ canvas {
 
 .hidden {
     display: none;
+}
+
+nav ul {
+    list-style-type: none;
+    padding-top: 1.25rem;
+    position: relative;
+    /* To position the pseudo element correctly */
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 1.25rem;
+    position: relative;
+    /* Required for positioning the pseudo-element */
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem;
+    /* Add some padding for better click area */
+    transition: color 0.3s ease;
+    /* Smooth transition for colors */
+}
+
+nav a.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    /* Position below the text */
+    height: 3px;
+    /* Height of the highlight */
+    width: 100%;
+    /* Full width under the link */
+    background-color: var(--highlight-color);
+    /* Color of the highlight */
+    border-radius: 5px;
+    /* Rounded edges */
+}
+
+nav a:hover {
+    color: var(--highlight-color);
+    /* Change text color on hover */
 }
 
 @media (max-width: 750px) {

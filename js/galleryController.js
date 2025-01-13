@@ -1,6 +1,7 @@
 'use strict'
 
 function renderGallery() {
+    setActiveNavLink('Gallery')
     const gallery = getGallery()
     document.querySelector('.meme-container').classList.add('hidden')
     document.querySelector('.options').classList.add('hidden')

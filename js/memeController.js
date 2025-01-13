@@ -12,7 +12,28 @@ function onInit() {
     addLine()
 }
 
+function setActiveNavLink(section) {
+    const links = document.querySelectorAll('.nav-link');
+
+    if (!links.length) {
+        console.error('No navigation links found');
+        return;
+    }
+
+    links.forEach(link => {
+        link.classList.remove('active');
+    });
+
+    const activeLink = Array.from(links).find(link => link.textContent.includes(section));
+    if (activeLink) {
+        activeLink.classList.add('active');
+    } else {
+        console.error(`No link found for section: ${section}`);
+    }
+}
+
 function renderMeme() {
+    setActiveNavLink('Meme Editor')
     document.querySelector('.meme-container').classList.remove('hidden')
     document.querySelector('.options').classList.remove('hidden')
     document.querySelector('.gallery').classList.add('hidden')
@@ -291,6 +312,7 @@ function onLoadMemeFromGallery(idx) {
 }
 
 function onShowGallery() {
+    setActiveNavLink('Saved Memes')
     renderSavedMemes()
     document.querySelector('.saved-gallery').classList.remove('hidden')
     document.querySelector('.meme-container').classList.add('hidden')
