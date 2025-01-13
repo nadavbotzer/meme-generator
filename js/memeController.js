@@ -8,27 +8,30 @@ const MEME_KEY = 'savedMemes'
 function onInit() {
     gCanvas = document.querySelector('canvas')
     gCtx = gCanvas.getContext('2d')
+    showDialog()
+}
+
+function showDialog() {
+    const dialog = document.getElementById('welcomeDialog')
+    dialog.showModal()
+}
+
+function startMemeEditor() {
+    const dialog = document.getElementById('welcomeDialog')
+    dialog.close()
     renderMeme()
     addLine()
 }
 
 function setActiveNavLink(section) {
-    const links = document.querySelectorAll('.nav-link');
-
-    if (!links.length) {
-        console.error('No navigation links found');
-        return;
-    }
-
+    const links = document.querySelectorAll('.nav-link')
     links.forEach(link => {
-        link.classList.remove('active');
-    });
+        link.classList.remove('active')
+    })
 
-    const activeLink = Array.from(links).find(link => link.textContent.includes(section));
+    const activeLink = Array.from(links).find(link => link.textContent.includes(section))
     if (activeLink) {
-        activeLink.classList.add('active');
-    } else {
-        console.error(`No link found for section: ${section}`);
+        activeLink.classList.add('active')
     }
 }
 
