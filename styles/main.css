@@ -6,8 +6,7 @@
     --input-border-color: #ccc;
     --canvas-border-color: #000;
     --gallery-border-color: #ccc;
-    --highlight-color: #ffcc00;
-    /* New highlight color */
+    --highlight-color: #f5e7af;
 }
 
 /* Reset */
@@ -76,26 +75,17 @@ header {
 
 footer {
     background-color: var(--primary-color);
-    /* Using your primary color */
     color: white;
-    /* Text color */
     text-align: center;
-    /* Center the text */
     padding: 1rem 0;
-    /* Top and bottom padding */
     position: relative;
-    /* Ensure it fits well in normal flow */
     bottom: 0;
-    /* Align at bottom of the page */
     width: 100%;
-    /* Full width */
 }
 
 footer p {
     margin: 0;
-    /* Remove default margin */
     font-size: 0.875rem;
-    /* Slightly smaller font size */
 }
 
 nav ul {
@@ -178,7 +168,6 @@ main {
 .color:focus {
     border-color: var(--primary-color);
     outline: none;
-    /* Remove default outline */
 }
 
 .btn {
@@ -266,6 +255,11 @@ canvas {
     height: 100%;
 }
 
+a {
+    text-decoration: none;
+    text-align: center;
+}
+
 /* Saved Meme Gallery */
 .saved-memes {
     display: flex;
@@ -329,23 +323,19 @@ nav ul {
     list-style-type: none;
     padding-top: 1.25rem;
     position: relative;
-    /* To position the pseudo element correctly */
 }
 
 nav ul li {
     display: inline;
     margin: 0 1.25rem;
     position: relative;
-    /* Required for positioning the pseudo-element */
 }
 
 nav a {
     color: white;
     text-decoration: none;
     padding: 0.5rem;
-    /* Add some padding for better click area */
     transition: color 0.3s ease;
-    /* Smooth transition for colors */
 }
 
 nav a.active::after {
@@ -353,33 +343,23 @@ nav a.active::after {
     position: absolute;
     left: 0;
     bottom: -4px;
-    /* Position below the text */
     height: 3px;
-    /* Height of the highlight */
     width: 100%;
-    /* Full width under the link */
     background-color: var(--highlight-color);
-    /* Color of the highlight */
     border-radius: 5px;
-    /* Rounded edges */
 }
 
 nav a:hover {
     color: var(--highlight-color);
-    /* Change text color on hover */
 }
 
 dialog {
     border: none;
-    /* Remove default borders */
     border-radius: 0.5rem;
-    /* Rounded corners */
     padding: 1.5rem;
     max-width: 400px;
-    /* Limit the width */
     text-align: center;
     margin: auto;
-    /* Center the text */
     box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.3);
 }
 
