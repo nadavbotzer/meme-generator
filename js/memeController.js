@@ -276,27 +276,41 @@ function renderSavedMemes() {
     const savedMemes = JSON.parse(localStorage.getItem(MEME_KEY)) || []
     savedMemesContainer.innerHTML = ''
 
-    savedMemes.forEach((meme, idx) => {
-        const memeElement = document.createElement('div')
-        memeElement.classList.add('saved-meme')
-        // Create the meme image
-        const memeImage = new Image()
-        memeImage.src = meme.image
-        memeImage.alt = `Saved Meme ${idx + 1}`
-        memeImage.onload = () => {
-            memeElement.appendChild(memeImage)
-            //"X" delete button
-            const deleteBtn = document.createElement('button')
-            deleteBtn.classList.add('delete-btn')
-            deleteBtn.textContent = 'x'
-            deleteBtn.addEventListener('click', () => onDeleteMemeFromSaved(idx, event))
-            memeElement.appendChild(deleteBtn)
-            savedMemesContainer.appendChild(memeElement)
-        }
-        memeElement.onclick = () => onLoadMemeFromGallery(idx)
-    })
+    if (savedMemes.length === 0) {
+        showEmptyGalleryDialog()
+    } else {
+        savedMemes.forEach((meme, idx) => {
+            const memeElement = document.createElement('div')
+            memeElement.classList.add('saved-meme')
+            // Create the meme image
+            const memeImage = new Image()
+            memeImage.src = meme.image
+            memeImage.alt = `Saved Meme ${idx + 1}`
+            memeImage.onload = () => {
+                memeElement.appendChild(memeImage)
+                //"X" delete button
+                const deleteBtn = document.createElement('button')
+                deleteBtn.classList.add('delete-btn')
+                deleteBtn.textContent = 'x'
+                deleteBtn.addEventListener('click', () => onDeleteMemeFromSaved(idx, event))
+                memeElement.appendChild(deleteBtn)
+                savedMemesContainer.appendChild(memeElement)
+            }
+            memeElement.onclick = () => onLoadMemeFromGallery(idx)
+        })
+    }
 }
 
+function showEmptyGalleryDialog() {
+    const dialog = document.getElementById('emptyGalleryDialog');
+    dialog.showModal()
+}
+
+function redirectToMemeEditor() {
+    const dialog = document.getElementById('emptyGalleryDialog');
+    dialog.close()
+    renderMeme()
+}
 
 function onDeleteMemeFromSaved(idx, ev) {
     ev.stopPropagation()

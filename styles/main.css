@@ -392,6 +392,11 @@ dialog {
     margin-bottom: 2rem;
 }
 
+.dialog-content {
+    padding: 1.5rem;
+    text-align: center;
+}
+
 @media (max-width: 750px) {
 
     .options {
