@@ -75,7 +75,7 @@
                     <button class="btn" onclick="onSaveMeme()">Save to Gallery</button>
                 </div>
             </section>
-            <section class="meme-container">
+            <section class="meme-container hidden">
                 <div class="canvas-container">
                     <canvas onmousedown="onDown(event)" onmouseup="onUp()" onmousemove="onMoveText(event)">
 
@@ -88,6 +88,9 @@
                 <div class="saved-memes gallery"></div>
             </section>
         </main>
+        <footer>
+            <p>Nadav Botzer, Coding Academy DEC2024</p>
+        </footer>
     </div>
     <script src="./js/service/memeService.js"></script>
     <script src="./js/memeController.js"></script>

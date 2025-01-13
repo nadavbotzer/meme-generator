@@ -48,7 +48,7 @@ body {
     align-items: center;
     min-height: 100vh;
     background-color: var(--background-color);
-    padding-block: 3rem;
+    padding-block: 1.35rem;
 }
 
 /* Main Layout */
@@ -72,6 +72,30 @@ header {
     text-align: center;
     width: 100%;
 
+}
+
+footer {
+    background-color: var(--primary-color);
+    /* Using your primary color */
+    color: white;
+    /* Text color */
+    text-align: center;
+    /* Center the text */
+    padding: 1rem 0;
+    /* Top and bottom padding */
+    position: relative;
+    /* Ensure it fits well in normal flow */
+    bottom: 0;
+    /* Align at bottom of the page */
+    width: 100%;
+    /* Full width */
+}
+
+footer p {
+    margin: 0;
+    /* Remove default margin */
+    font-size: 0.875rem;
+    /* Slightly smaller font size */
 }
 
 nav ul {
@@ -119,6 +143,10 @@ main {
     flex: 1;
 }
 
+.options .text {
+    grid-column: 1/-1;
+}
+
 .options-group:last-child {
     grid-column: 1/-1;
     margin-top: .5rem;
@@ -138,23 +166,30 @@ main {
 
 }
 
-.text {
-    grid-column: 1/-1;
-    padding: .75rem 1rem;
+.text,
+.color {
+    padding: 0.75rem;
     border: 1px solid var(--input-border-color);
     border-radius: 0.25rem;
+    transition: border-color 0.2s ease;
+}
+
+.text:focus,
+.color:focus {
+    border-color: var(--primary-color);
+    outline: none;
+    /* Remove default outline */
 }
 
 .btn {
     background-color: var(--primary-color);
-    color: white;
-    text-decoration: none;
-    padding: 0.625rem 0.9375rem;
+    color: #fff;
+    font-size: 1rem;
+    padding: 0.625rem 1.25rem;
     border: none;
     border-radius: 0.25rem;
     cursor: pointer;
-    font-size: 1rem;
-    text-align: center;
+    transition: background-color 0.3s ease, transform 0.2s;
 }
 
 .emoji {
@@ -163,6 +198,8 @@ main {
 
 .btn:hover {
     background-color: var(--primary-hover);
+    transform: scale(1.05);
+    /* Slightly scale on hover */
 }
 
 /* Canvas Container */
