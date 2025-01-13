@@ -183,6 +183,7 @@ main {
 
 .emoji {
     font-size: 1.75rem;
+    text-align: center;
 }
 
 .btn:hover {
@@ -389,7 +390,8 @@ dialog {
     }
 
     .emoji {
-        font-size: 1.15rem;
+        font-size: 1.5rem;
+        margin: 0;
     }
 
     .options-group:last-child {
